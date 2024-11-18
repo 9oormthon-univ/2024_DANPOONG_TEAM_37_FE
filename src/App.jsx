@@ -4,21 +4,19 @@ import {
   MobileView,
   isBrowser,
   isMobile,
-} from "react-device-detect";
+} from 'react-device-detect';
 
-const Home = () => <h1>Home</h1>;
+import { Home } from './pages';
 
 function App() {
   return (
-    <div style={{ margin: "30px" }}>
+    <div >
       <BrowserView>
         <h1>Browser View</h1>
       </BrowserView>
-      <MobileView>
-        <Home />
-      </MobileView>
+      <MobileView>{<Home />}</MobileView>
     </div>
-  )
-};
+  );
+}
 
 export default App;
