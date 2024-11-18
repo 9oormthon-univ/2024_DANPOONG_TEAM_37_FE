@@ -1,0 +1,11 @@
+dist/
+build/
+node_modules/
+.prettierrc
+npm-debug.log
+public/
+coverage/
+.vscode/
+.idea/
+.DS_Store
+package-lock.json
