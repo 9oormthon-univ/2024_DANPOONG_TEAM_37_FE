@@ -1,21 +1,17 @@
-import logo from './images/logo.png';
-import logoSmall from './images/logoSmall.png';
-import goBack from './images/goback.png';
-import list from './images/list.png';
-import basicProfile from './images/basic-profile.png';
-import notify from './images/notifications.png';
-import user from './images/user.png';
-import alertUser from './images/alert-user.png';
-import alertTeam from './images/alert-users.png';
+import logo from './images/logo.svg';
+import mainLogo from './images/logo-svg.svg';
+import back from './images/back.svg';
+import applyList from './images/apply-list.svg';
+import basicProfile from './images/profile.svg';
+import notify from './images/notify.svg';
+import user from './images/user.svg';
 
 export {
   logo,
-  logoSmall,
-  goBack,
-  list,
+  mainLogo,
+  back,
+  applyList,
   basicProfile,
   notify,
   user,
-  alertUser,
-  alertTeam,
 };

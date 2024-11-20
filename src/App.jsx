@@ -2,19 +2,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   BrowserView,
   MobileView,
-  isBrowser,
-  isMobile,
 } from 'react-device-detect';
 
-import { Home } from './pages';
+import Index from './index.jsx'
 
 function App() {
   return (
-    <div >
+    <div>
       <BrowserView>
         <h1>Browser View</h1>
       </BrowserView>
-      <MobileView>{<Home />}</MobileView>
+      <MobileView>{<Index />}</MobileView>
     </div>
   );
 }
