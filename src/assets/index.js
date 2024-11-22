@@ -8,6 +8,8 @@ import user from './images/user.svg';
 import write from './images/write.svg';
 import pencil from './images/pencil.svg';
 import hand from './images/hand.svg';
+import dropdown from './images/dropdown.svg';
+import calendar from './images/calendar.svg';
 
 export {
   logo,
@@ -20,4 +22,6 @@ export {
   write,
   pencil, 
   hand,
+  dropdown,
+  calendar,
 };
