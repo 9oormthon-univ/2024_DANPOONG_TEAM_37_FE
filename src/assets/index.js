@@ -5,6 +5,9 @@ import applyList from './images/apply-list.svg';
 import basicProfile from './images/profile.svg';
 import notify from './images/notify.svg';
 import user from './images/user.svg';
+import write from './images/write.svg';
+import pencil from './images/pencil.svg';
+import hand from './images/hand.svg';
 
 export {
   logo,
@@ -14,4 +17,7 @@ export {
   basicProfile,
   notify,
   user,
+  write,
+  pencil, 
+  hand,
 };
