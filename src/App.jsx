@@ -1,25 +1,15 @@
+import React from 'react';
 import styled from 'styled-components';
 import { mainLogo, notify } from './assets';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import { Home, Mate, MyPage, MyInfo } from './pages';
-
-
-const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-  width: 100%;
-  height: 120px; 
-`;
+import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
+import { Home, Mate, MyPage, WritePost } from './pages';
 
 const Header = styled.header`
-  width: 100%;
-  max-width: 420px; 
+  width: 100vw;
   height: 120px;
   background: #1a3d7d;
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
+  justify-content: space-between;
+  items-align: center;
   position: relative;
 `;
 
@@ -68,37 +58,46 @@ const Underline = styled.div`
 
 const App = () => {
   return (
+    <BrowserRouter>
+      <MainContent />
+    </BrowserRouter>
+  );
+};
+
+const MainContent = () => {
+  const location = useLocation();  
+
+  return (
     <>
-      <BrowserRouter>
-        <HeaderContainer>
-          <Header>
-            <LogoImage src={mainLogo} alt='' />
-            <Notify src={notify} alt='' />
-            <TabBar>
-              <Link to='/' style={{ textDecoration: 'none' }}>
-                <TabItem>HOME</TabItem>
-              </Link>
-              <Link to='/mate' style={{ textDecoration: 'none' }}>
-                <TabItem>MATE</TabItem>
-              </Link>
-              <Link to='/mypage' style={{ textDecoration: 'none' }}>
-                <TabItem>MY</TabItem>
-              </Link>
-              <Underline />
-            </TabBar>
-          </Header>
-        </HeaderContainer>
-        <main>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/mate' element={<Mate />} />
-            <Route path='/mypage' element={<MyPage />} />
-            <Route path='/mypage/myinfo' element={<MyInfo />} />
-           
-          </Routes>
-        </main>
-      </BrowserRouter>
+      {/* 헤더를 렌더링하지 않는 페이지 */}
+      {location.pathname !== '/write' && (
+        <Header>
+          <LogoImage src={mainLogo} alt='' />
+          <Notify src={notify} alt='' />
+          <TabBar>
+            <Link to='/' style={{ textDecoration: 'none' }}>
+              <TabItem>HOME</TabItem>
+            </Link>
+            <Link to='/mate' style={{ textDecoration: 'none' }}>
+              <TabItem>MATE</TabItem>
+            </Link>
+            <Link to='/mypage' style={{ textDecoration: 'none' }}>
+              <TabItem>MY</TabItem>
+            </Link>
+            <Underline />
+          </TabBar>
+        </Header>
+      )}
+      <main>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/mate' element={<Mate />} />
+          <Route path='/mypage' element={<MyPage />} />
+          <Route path='/write' element={<WritePost />} />
+        </Routes>
+      </main>
     </>
   );
 };
+
 export default App;
