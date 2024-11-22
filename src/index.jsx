@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { mainLogo, notify } from './assets';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';  
 import { Home, Mate, MyPage } from './pages';
 
 const Header = styled.header`
@@ -57,7 +57,7 @@ const Underline = styled.div`
 
 const Index = () => {
   return (
-    <BrowserRouter>
+    <>
       <Header>
         <LogoImage src={mainLogo} alt='' />
         <Notify src={notify} alt='' />
@@ -81,7 +81,8 @@ const Index = () => {
           <Route path='/mypage' element={<MyPage />} />
         </Routes>
       </main>
-    </BrowserRouter>
+    </>
   );
 };
+
 export default Index;
