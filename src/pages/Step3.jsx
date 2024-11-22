@@ -8,8 +8,8 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 24px;
-  height: 80vh; //웹 기준 스크롤 안생기는 높이
-  overflow: hidden; 
+  height: 75vh; 
+
 `;
 
 const Title = styled.h2`
