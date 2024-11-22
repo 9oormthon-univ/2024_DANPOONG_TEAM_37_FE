@@ -5,15 +5,18 @@ const Container = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;  
+  justify-content: flex-start;
   align-items: center;
-  gap: 24px; 
+  gap: 24px;
+  height: 80vh; //웹 기준 스크롤 안생기는 높이
+  overflow: hidden; 
 `;
 
 const Title = styled.h2`
   font-size: 16px;
   color: #333;
   margin-bottom: 16px;
+  margin-left: -130px;
 `;
 
 const InputGroup = styled.div`
@@ -36,7 +39,7 @@ const InputBox = styled.div`
   padding: 10px;
   border-radius: 10px;
   background: #F5F5F5;
-   box-sizing: border-box;
+  box-sizing: border-box;
 `;
 
 const Icon = styled.div`
@@ -70,18 +73,18 @@ const Button = styled.button`
   padding: 16px;
   background: white;
   color: #B3B3B3;
-  border: 1.5px solid #E2E8F0; 
+  border: 1.5px solid #E2E8F0;
   border-radius: 10px;
   font-size: 18px;
   cursor: pointer;
+  margin-top: auto;
 
   &:disabled {
     background: #ccc;
     cursor: not-allowed;
-    border: 1.5px solid #E2E8F0; 
+    border: 1.5px solid #E2E8F0;
   }
 `;
-
 
 const Step3 = () => {
   return (
