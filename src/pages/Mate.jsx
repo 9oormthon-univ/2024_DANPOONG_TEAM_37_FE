@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Toggle from "../components/mate/Toggle"; 
-import { write, hand } from "../assets"; 
+import { useNavigate } from "react-router-dom"; 
+import Toggle from "../components/mate/Toggle";
+import { write, hand } from "../assets";
 import styled from "styled-components";
 
 const MateContent = styled.div`
@@ -16,9 +17,16 @@ const IconContainer = styled.div`
 
 const Mate = () => {
   const [activeComponent, setActiveComponent] = useState("팀장");
+  const navigate = useNavigate(); 
 
   const handleToggleChange = (type) => {
     setActiveComponent(type);
+  };
+
+  const handleWriteClick = () => {
+    if (activeComponent === "팀장") {
+      navigate("/write"); 
+    }
   };
 
   return (
@@ -30,6 +38,8 @@ const Mate = () => {
           alt={activeComponent === "팀장" ? "Write Icon" : "Hand Icon"}
           width="24"
           height="24"
+          style={{ cursor: "pointer" }} 
+          onClick={handleWriteClick} 
         />
       </IconContainer>
       <MateContent>
