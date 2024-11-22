@@ -3,15 +3,15 @@ import styled from "styled-components";
 
 const ToggleContainer = styled.div`
   display: flex;
-  height: 25px; /* 높이 유지 */
+  height: 25px; 
   padding: 4px 0px;
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  width: 130px; /* 너비를 줄임 */
+  width: 130px; 
   margin: 0 auto;
-  position: relative; /* 상대 위치 설정 */
-  background-color: transparent; /* 배경색 없음 */
+  position: relative; 
+  background-color: transparent;
 `;
 
 const ToggleButton = styled.button`
@@ -19,7 +19,7 @@ const ToggleButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 28px; /* 높이 유지 */
+  height: 28px; 
   padding: 4px 0px;
   background-color: transparent;
   color: ${(props) => (props.active ? "#FFF" : "#757575")};
@@ -30,18 +30,18 @@ const ToggleButton = styled.button`
   font-family: Pretendard;
   font-size: 14px;
   font-weight: ${(props) => (props.active ? "700" : "normal")};
-  line-height: 20px; /* 142.857% */
+  line-height: 20px; 
 `;
 
 const Slider = styled.div`
   position: absolute;
   top: 0;
-  left: ${(props) => (props.active === "팀장" ? "0" : "65px")}; /* left 위치를 조정 */
-  width: 65px; /* 너비를 줄임 */
-  height: 100%; /* 높이 유지 */
-  background-color: #1a3d7d; /* 활성화된 버튼 색 */
-  border-radius: 9999px; /* 둥근 모서리 */
-  transition: all 0.3s ease; /* 이동 애니메이션 */
+  left: ${(props) => (props.active === "팀장" ? "0" : "65px")}; 
+  width: 65px; 
+  height: 100%; 
+  background-color: #1a3d7d; 
+  border-radius: 9999px;
+  transition: all 0.3s ease;
   z-index: -1;
 `;
 
@@ -50,12 +50,11 @@ const Toggle = ({ onToggleChange }) => {
 
   const handleClick = (tab) => {
     setActiveTab(tab);
-    onToggleChange(tab); // 상위 컴포넌트로 상태 전달
+    onToggleChange(tab); 
   };
 
   return (
     <ToggleContainer>
-      {/* Slider 요소가 이동하도록 추가 */}
       <Slider active={activeTab} />
       <ToggleButton
         active={activeTab === "팀장"}
