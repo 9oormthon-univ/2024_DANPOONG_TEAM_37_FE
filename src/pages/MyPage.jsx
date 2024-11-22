@@ -9,7 +9,7 @@ const MyPageSection = styled.section`
   display: flex;
   height : auto
   min-height: 100vh
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
 `;
