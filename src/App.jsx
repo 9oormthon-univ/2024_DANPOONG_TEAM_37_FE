@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { mainLogo, notify } from './assets';
 import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
-import { Home, Mate, MyPage, WritePost } from './pages';
+import { Home, Mate, MyPage, WritePost, MyInfo } from './pages';
 
 const Header = styled.header`
   width: 100vw;
@@ -94,6 +94,7 @@ const MainContent = () => {
           <Route path='/mate' element={<Mate />} />
           <Route path='/mypage' element={<MyPage />} />
           <Route path='/write' element={<WritePost />} />
+          <Route path='/mypage/myinfo' element={<MyInfo />} />
         </Routes>
       </main>
     </>

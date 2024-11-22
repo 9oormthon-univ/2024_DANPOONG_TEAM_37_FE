@@ -3,9 +3,13 @@ import { useNavigate } from "react-router-dom";
 import Toggle from "../components/mate/Toggle";
 import { write, hand } from "../assets";
 import styled from "styled-components";
+import LeaderList from "../components/mate/LeaderList"; 
 
 const MateContent = styled.div`
   padding: 16px;
+  display: flex;
+  justify-content: center; 
+  align-items: center; /* 중앙 정렬 */
 `;
 
 const IconContainer = styled.div`
@@ -44,9 +48,9 @@ const Mate = () => {
       </IconContainer>
       <MateContent>
         {activeComponent === "팀장" ? (
-          <div>팀장 </div>
+          <LeaderList /> /* 팀장 리스트 표시 */
         ) : (
-          <div>팀원 </div>
+          <div>팀원</div>
         )}
       </MateContent>
     </>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Step1 from "./Step1";
-import Step2 from "./Step2";
-import Step3 from "./Step3";
+import Step1 from "../components/mate/Step1";
+import Step2 from "../components/mate/Step2";
+import Step3 from "../components/mate/Step3";
 import { back } from "../assets";
 import { useNavigate } from "react-router-dom";
 
