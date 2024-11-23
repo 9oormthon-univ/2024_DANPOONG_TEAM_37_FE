@@ -3,6 +3,12 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";  
 import PostModal from "./modal/PostModal";
 
+const Title = styled.h3`
+  font-size: 16px;
+  color: #333;
+  margin-top: 30px;  /* 위쪽 여백을 늘려서 제목을 더 밑으로 내림 */
+`;
+
 const ListItem = styled.div`
   width: 350px;
   height: 119px; 
@@ -18,18 +24,14 @@ const ListItem = styled.div`
   border: 1.5px solid rgba(226, 232, 240, 0.8);
   margin-bottom: 16px;
   cursor: pointer; 
+  padding-top: 16px;  /* ListItem의 위쪽 패딩 추가 */
 `;
 
-const Title = styled.h3`
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 4px; 
-`;
 
 const Info = styled.p`
   font-size: 12px;
-  color: #666;
-  margin-bottom: 8px;
+  color: #B3B3B3;
+  margin-top: 6px;
 `;
 
 const Label = styled.div`
@@ -38,35 +40,37 @@ const Label = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 3px;
-  background: rgba(238, 246, 255, 0.7);
-  color: rgba(67, 72, 143, 0.8);
+  background-color: #EEF6FFB2;
+  color: #43488FCC;
   font-family: Roboto, sans-serif;
   font-size: 9.29px;
   font-weight: 500;
   line-height: 13.271px; 
+  height: 21.233px;
   letter-spacing: 0.066px;
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 15px;
+  left: 16px;
 `;
 
 // 상태
 const StatusLabel = styled.div`
   display: flex;
+  height: 21.5px;
   justify-content: center;
   align-items: center;
-  border-radius: 3px;
+  border-radius: 4px;
   font-family: Roboto, sans-serif;
   font-size: 9.29px;
   font-weight: 500;
   line-height: 13.271px;
   letter-spacing: 0.066px;
   position: absolute;
-  top: 8px;
-  right: 8px; 
+  top: 13px;
+  right: 15px; 
   width: ${(props) => (props.completed ? "44px" : "34px")};
   background: ${(props) => (props.completed ? "#F5F5F5" : "#FFEAEA")};
-  color: ${(props) => (props.completed ? "#666" : "#D9534F")};
+  color: ${(props) => (props.completed ? "#666" : "#F75247")};
 `;
 
 
@@ -83,8 +87,8 @@ const StatusButton = styled.button`
   line-height: 13.271px; 
   letter-spacing: 0.066px;
   position: absolute;
-  bottom: 8px;
-  right: 8px;
+  bottom: 13px;
+  right: 15px;
   border: none;
   cursor: pointer;
 `;

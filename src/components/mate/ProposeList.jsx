@@ -25,15 +25,17 @@ const MateTitle = styled.h3`
 `;
 
 const MateLabel = styled.div`
-  display: flex;
+   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 3px;
-  background: rgba(238, 246, 255, 0.7);
-  color: rgba(67, 72, 143, 0.8);
-  font-size: 9.29px;
-  font-weight: 500;
+  border-radius: 4px;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #EEF6FFB2;
+  color: #43488FCC;
   position: absolute;
+  box-sizing: border-box;
   top: 16px; 
   left: 8px;
   height: 21.233px;
@@ -42,41 +44,44 @@ const MateLabel = styled.div`
 
 const StatusLabel = styled.div`
   display: flex;
+  width: 34px;
+  height: 21.233px;
+  white-space: nowrap;
   justify-content: center;
   align-items: center;
   border-radius: 3px;
-  background: #f5f5f5;
   font-size: 9.29px;
   font-weight: 500;
-  width: 61.648px;
+  line-height: 13.271px;
+  letter-spacing: 0.066px;
   position: absolute;
-  height: 21.233px;
-  top: 16px;
-  right: 8px;
+  top: 8px;
+  right: 8px; 
+  background: ${(props) => (props.completed ? "#F5F5F5" : "#FFEAEA")};
+  color: ${(props) => (props.completed ? "#666" : "#F75247")};
 `;
 
 const AuthorProposalLabel = styled.div`
   display: flex;
-  width: 50px;
+  width: 43px;
   justify-content: center;
   align-items: center;
-  border-radius: 3px;
+  border-radius: 4px;
   background: #1A3D7D;
   color: white;
   font-size: 9.29px;
-  font-weight: 500;
   position: absolute;
   top: 16px;
   left: 65px;  
-  height: 21.233px;
+  height: 19px;
   padding: 2px 8px;
 `;
 
 const ProposeList = () => {
   const projects = [
-    { title: " 프로젝트", type: "프로젝트", status: "가입완료" },
-    { title: "백엔드 스터디", type: "스터디", status: "가입대기" },
-    { title: "디자인 협업 프로젝트", type: "프로젝트", status: "거절됨" },
+    { title: " 프로젝트", type: "프로젝트", status: "D-10" },
+    { title: "백엔드 스터디", type: "스터디", status: "D-3" },
+    { title: "디자인 협업 프로젝트", type: "프로젝트", status: "D-5" },
   ];
 
   return (

@@ -35,7 +35,7 @@ const Profile = styled.img`
 const Nickname = styled.div`
   color: #474747;
   font-family: Pretendard, sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 40.088px;
   letter-spacing: 0.2px;
@@ -55,6 +55,7 @@ const BasicTag = styled.div`
   align-items: center;
   width: 49.496px;
   height: 25px;
+  font-weight: 600;
   border-radius: 6.329px;
   border: 1.3px solid rgba(226, 232, 240, 0.8);
   font-size: 10px;
@@ -67,11 +68,12 @@ const StackTag = styled.div`
   justify-content: center;
   align-items: center;
   width: 62px;
+  font-weight: 600;
   height: 25px;
   border-radius: 3px;
   background: rgba(214, 234, 255, 0.45);
   font-size: 10px;
-  color: #474747;
+  color: #43488F;
   font-family: Pretendard, sans-serif;
 `;
 
@@ -108,7 +110,6 @@ const ApplyMate = () => {
           <UserIcon src={user} alt="유저 아이콘" />
           지원한 Mate
         </Title>
-
         
         <Container onClick={openModal}>
           <Profile src={profile} alt="프로필 아이콘" />

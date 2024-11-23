@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { link } from "../../assets"; 
 
 const Container = styled.div`
   padding: 20px;
@@ -42,12 +43,11 @@ const InputBox = styled.div`
   box-sizing: border-box;
 `;
 
-const Icon = styled.div`
-  width: 24px;
-  height: 24px;
-  background: url("/path/to/icon.svg") no-repeat center center;
-  background-size: contain;
-  margin-right: 8px;
+const Icon = styled.img`
+  width: 12px;
+  height: 12px;
+  color: #333;
+  margin-right: 8px; 
 `;
 
 const Input = styled.input`
@@ -78,6 +78,7 @@ const Button = styled.button`
   font-size: 18px;
   cursor: pointer;
   margin-top: auto;
+  font-family: Light;
 
   &:disabled {
     background: #ccc;
@@ -93,22 +94,22 @@ const Step3 = () => {
       <InputGroup>
         <InputLabel>구글폼 URL</InputLabel>
         <InputBox>
-          <Icon />
-          <Input type="text" placeholder="https://www.notion.so/Fit-Me-12672b" />
+          <Icon src={link} alt="Link Icon" />
+          <Input type="text" placeholder="URL    https://www.notion.so/Fit-Me-12672b" />
         </InputBox>
       </InputGroup>
       <InputGroup>
         <InputLabel>카카오톡 오픈채팅방 URL</InputLabel>
         <InputBox>
-          <Icon />
-          <Input type="text" placeholder="https://www.notion.so/Fit-Me-12672b" />
+          <Icon src={link} alt="Link Icon" />
+          <Input type="text" placeholder="URL    https://www.notion.so/Fit-Me-12672b" />
         </InputBox>
       </InputGroup>
       <InputGroup>
         <InputLabel>포트폴리오 URL</InputLabel>
         <InputBox>
-          <Icon />
-          <Input type="text" placeholder="https://www.notion.so/Fit-Me-12672b" />
+          <Icon src={link} alt="Link Icon" />
+          <Input type="text" placeholder="URL    https://www.notion.so/Fit-Me-12672b" />
         </InputBox>
       </InputGroup>
       <Button>게시글 등록</Button>
