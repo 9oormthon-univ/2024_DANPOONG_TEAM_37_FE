@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Select from 'react-select';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { back } from '../assets';
-import Step1 from '../components/apply/Step1';
-import Step2 from '../components/apply/Step2';
-import Step3 from '../components/apply/Step3';
 
 const Container = styled.div`
   width: 100%;
@@ -37,29 +33,9 @@ const BackIcon = styled.img`
   cursor: pointer;
 `;
 
-const UnderlineContainer = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.3);
-`;
-
-const UnderlineHighlight = styled.div`
-  position: absolute;
-  height: 100%;
-  width: 33.33%;
-  background: white;
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(${(props) => (props.step - 1) * 100}%);
-`;
-
-
-const ApplicationForm = () => {
+const Notice = () => {
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
-  const goNextStep = () => setStep((prev) => Math.min(prev + 1, 3));
 
   const goPrevStep = () => {
     if (step === 1) {
@@ -73,19 +49,13 @@ const ApplicationForm = () => {
     <Container>
       <Header>
         <BackIcon src={back} alt='뒤로가기' onClick={goPrevStep} />
-        
-        지원서
-        <UnderlineContainer>
-          <UnderlineHighlight step={step} />
-        </UnderlineContainer>
+        알림
       </Header>
       <main>
-        {step === 1 && <Step1 onNext={goNextStep} />}
-        {step === 2 && <Step2 onNext={goNextStep} />}
-        {step === 3 && <Step3 />}
+        <div>아직 알람이 없습니다</div>
       </main>
     </Container>
   );
 };
 
-export default ApplicationForm;
+export default Notice;
