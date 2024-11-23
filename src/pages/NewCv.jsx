@@ -5,7 +5,7 @@ import { useNavigate} from 'react-router-dom';
 import { back } from '../assets';
 import Step1 from '../components/apply/Step1';
 import Step2 from '../components/apply/Step2';
-//import Step3 from '../components/apply/Step3';
+import Step3 from '../components/apply/Step3';
 
 const Container = styled.div`
   width: 100%;

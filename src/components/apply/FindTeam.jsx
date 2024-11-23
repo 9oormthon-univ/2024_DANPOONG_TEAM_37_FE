@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { logo } from '../../assets';
 
 const CardContainer = styled.div`
   width: 350px;
+  height: 198px;
   max-width: 400px;
   background: linear-gradient(135deg, #1a1a1a, #333);
   border-radius: 16px;
-  padding: 20px;
+
   color: white;
 
   position: relative;
@@ -15,6 +17,7 @@ const CardContainer = styled.div`
 `;
 
 const TextContainer = styled.div`
+  margin: 20px;
   width: 80%;
   line-height: 1.5;
   font-weight: bold;
@@ -26,6 +29,7 @@ const TextContainer = styled.div`
 `;
 
 const ColorOptions = styled.div`
+  margin: 20px;
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
@@ -45,6 +49,31 @@ const ColorCircle = styled.div`
   }
 `;
 
+const MateButton = styled(Link)`
+  margin: 20px;
+  padding: 10px 20px;
+  background: #ffffff;
+  color: #1a3d7d;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background: #f0f0f0;
+  }
+`;
+
+const NeonEffect = styled.div`
+  width: 100px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+`;
+
 const FindTeam = () => {
   const colors = ['#ff4500', '#ffd700', '#32cd32']; // 빨강, 노랑, 초록 색상 코드
 
@@ -59,7 +88,10 @@ const FindTeam = () => {
           <ColorCircle key={index} color={color} />
         ))}
       </ColorOptions>
-      <Link to='/newcv'>MATE 활성화하기</Link>
+      <MateButton to='/newcv'>MATE 활성화하기</MateButton>
+      <NeonEffect>
+        <img src={logo} alt='logo' />
+      </NeonEffect>
     </CardContainer>
   );
 };

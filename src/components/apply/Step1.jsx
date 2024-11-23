@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { back } from '../../assets';
+
 import { useNavigate, Link } from 'react-router-dom';
 
 const Container = styled.div`
@@ -11,26 +11,6 @@ const Container = styled.div`
   align-items: center;
   height: 100vh;
   overflow-y: auto;
-`;
-
-const Header = styled.div`
-  height: 80px;
-  background: #1a3d7d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-`;
-
-const BackIcon = styled.img`
-  position: absolute;
-  left: 20px;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
 `;
 
 const FormGroup = styled.div`
@@ -90,22 +70,6 @@ const Input = styled.input`
   border: 1px solid #ddd;
   border-radius: 8px;
 `;
-
-const NextButton = styled(Link)`
-  width: 100%;
-  background-color: #1a3d7d;
-  color: white;
-  border: none;
-  padding: 15px;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #164075;
-  }
-`;
-
 
 const Button = styled.button`
   width: 330px;
