@@ -3,7 +3,6 @@ import React from 'react';
 
 const Section = styled.section`
   margin-top: 20px;
-  width: 90%;
 
   h2 {
     margin-left: 5px;
@@ -40,12 +39,6 @@ const Card = styled.div`
     }
   }
 
-  .content {
-    margin: 8px 0;
-    font-size: 14px;
-    color: #666;
-  }
-
   .footer {
     display: flex;
     justify-content: space-between;
@@ -71,24 +64,25 @@ const Card = styled.div`
   }
 `;
 
-const TeamSection = () => {
+const TeamSection = ({ filteredData =[] }) => {
   return (
     <Section>
-      <Card>
-        <div className='header'>
-          <div className='title'>프로젝트 제목</div>
-          <div className='tag'>D-10</div>
-        </div>
-        <div className='footer'>
-          <div className='skills'>
-            <span>React</span>
-            <span>SpringBoot</span>
-            <span>MySQL</span>
-            <span>Figma</span>
+      {filteredData.map((item) => (
+        <Card key={item.id}>
+          <div className='header'>
+            <div className='title'>{item.title}</div>
+            <div className='tag'>{item.deadline}</div>
           </div>
-          <div className='info'>닉네임</div>
-        </div>
-      </Card>
+          <div className='footer'>
+            <div className='skills'>
+              {item.skills.map((skill, index) => (
+                <span key={index}>{skill}</span>
+              ))}
+            </div>
+            <div className='info'>{item.nickname}</div>
+          </div>
+        </Card>
+      ))}
     </Section>
   );
 };

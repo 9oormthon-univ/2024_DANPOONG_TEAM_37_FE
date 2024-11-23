@@ -98,6 +98,7 @@ const MainContent = () => {
           <Route path='/mypage/myinfo' element={<MyInfo />} />
         </Routes>
       </main>
+      <footer></footer>
     </>
   );
 };
