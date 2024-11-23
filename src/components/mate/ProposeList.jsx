@@ -1,5 +1,6 @@
-import React from "react"; 
+import React, { useState } from "react";
 import styled from "styled-components";
+import PostModal from "./modal/PostModal"; 
 
 const MateListItem = styled.div`
   width: 350px;
@@ -25,7 +26,7 @@ const MateTitle = styled.h3`
 `;
 
 const MateLabel = styled.div`
-   display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
@@ -78,22 +79,33 @@ const AuthorProposalLabel = styled.div`
 `;
 
 const ProposeList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const projects = [
     { title: " 프로젝트", type: "프로젝트", status: "D-10" },
     { title: "백엔드 스터디", type: "스터디", status: "D-3" },
     { title: "디자인 협업 프로젝트", type: "프로젝트", status: "D-5" },
   ];
 
+  const handleItemClick = () => {
+    setIsModalOpen(true); 
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false); 
+  };
+
   return (
     <div>
       {projects.map((project, index) => (
-        <MateListItem key={index}>
+        <MateListItem key={index} onClick={handleItemClick}>
           <MateLabel>{project.type}</MateLabel> 
           <AuthorProposalLabel>작성자 제안</AuthorProposalLabel> 
           <StatusLabel>{project.status}</StatusLabel> 
           <MateTitle>{project.title}</MateTitle> 
         </MateListItem>
       ))}
+      {isModalOpen && <PostModal onClose={closeModal} />}
     </div>
   );
 };
