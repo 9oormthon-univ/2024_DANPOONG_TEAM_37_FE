@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import PostModal from "./PostModal";
+import { useNavigate } from "react-router-dom";  
+import PostModal from "./modal/PostModal";
 
 const ListItem = styled.div`
   width: 350px;
@@ -30,7 +31,6 @@ const Info = styled.p`
   color: #666;
   margin-bottom: 8px;
 `;
-
 
 const Label = styled.div`
   display: flex;
@@ -69,7 +69,7 @@ const StatusLabel = styled.div`
   color: ${(props) => (props.completed ? "#666" : "#D9534F")};
 `;
 
-// 지원현황 버튼 
+
 const StatusButton = styled.button`
   width: 65px;
   height: 26px;
@@ -90,6 +90,7 @@ const StatusButton = styled.button`
 `;
 
 const List = () => {
+  const navigate = useNavigate();  
   const [selectedItem, setSelectedItem] = useState(null);
 
   const items = [
@@ -124,6 +125,10 @@ const List = () => {
     setSelectedItem(null); 
   };
 
+  const handleStatusButtonClick = () => {
+    navigate("/apply");  
+  };
+
   return (
     <div>
       {items.map((item, index) => (
@@ -138,11 +143,10 @@ const List = () => {
           <Info>
             {item.currentMembers}명 / {item.totalMembers}명
           </Info>
-          <StatusButton>지원현황</StatusButton>
+          <StatusButton onClick={handleStatusButtonClick}>지원현황</StatusButton> 
         </ListItem>
       ))}
 
-      
       {selectedItem && <PostModal data={selectedItem} onClose={handleCloseModal} />}
     </div>
   );

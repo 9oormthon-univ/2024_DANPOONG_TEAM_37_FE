@@ -13,6 +13,7 @@ import activatehand from './images/activatehand.svg';
 import dropdown from './images/dropdown.svg';
 import calendar from './images/calendar.svg';
 import click from './images/click.svg';
+import profile from './images/profile.svg';
 import recommanduser from './images/recommanduser.svg';
 
 export {
@@ -31,5 +32,6 @@ export {
   calendar,
   activatepencil,
   click,
+  profile,
   recommanduser,
 };

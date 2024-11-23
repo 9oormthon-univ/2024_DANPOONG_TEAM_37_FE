@@ -146,7 +146,8 @@ const Step1 = ({ onNext }) => {
       </Select>
       <Title>진행 방식</Title>
       <Select>
-        <option>오프라인/ 온라인</option>
+        <option>오프라인</option>
+        <option>온라인</option>
       </Select>
       <Title>진행 기간</Title>
       <Select>
@@ -195,7 +196,7 @@ const Step1 = ({ onNext }) => {
 
       <Title>모집 분야</Title>
       <Select>
-        <option>10명 이상</option>
+        <option>포지션</option>
       </Select>
       <Select>
         <option>10명 이상</option>
