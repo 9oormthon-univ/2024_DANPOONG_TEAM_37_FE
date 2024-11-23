@@ -48,7 +48,7 @@ const CardContainer = styled.div`
 
 const Card = styled.div`
   width: 100px;
-  height: 68px;
+  height: 60px;
   flex-shrink: 0;
   background: #fff;
   border: 2px solid #e2e8f0cc;
@@ -58,50 +58,61 @@ const Card = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  cursor: pointer;
 `;
 
 const Name = styled.div`
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 14px;
   color: #333;
+  font-weight: 600;
   margin-bottom: 10px;
 `;
 
-const Tags = styled.div`
+const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  color: #ecf5ff;
   justify-content: center;
 `;
 
-const Tag = styled.div`
-  padding: 5px 10px;
-  background: #ecf5ff;
-  border-radius: 5px;
-  width: 32px;
-  color: #43488f;
-  height: 14px;
-  flex-shrink: 0;
-  font-size: 10px;
+const BasicTag = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  width: auto;
+  height: 16px;
+  padding: 0 4px; /* 1px 여유 공간 추가 */
+  border-radius: 4px;
+  background: #F7F7F7;
+  font-size: 10px;
+  color: #474747;
+  font-family: Pretendard, sans-serif;
 `;
+
+const StackTag = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 17px;
+  padding: 0 4px; /* 1px 여유 공간 추가 */
+  border-radius: 4px;
+  background: rgba(214, 234, 255, 0.45);
+  font-size: 10px;
+  color: #474747;
+  font-family: Pretendard, sans-serif;
+`;
+
 
 const RecommendMate = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
   const members = [
-    { name: "닉네임1", tags: ["Illustrator", "Figma"] },
-    { name: "닉네임2", tags: ["MySQL", "SpringBoot"] },
-    { name: "닉네임3", tags: ["React", "TypeScript"] },
-    { name: "닉네임4", tags: ["Jira", "Slack"] },
+    { name: "닉네임1", tags: ["백엔드", "SpringBoot"] },
+    { name: "닉네임2", tags: ["백엔드", "SpringBoot"] },
+    { name: "닉네임3", tags: ["프론트엔드","React", "TypeScript"] },
   ];
 
- 
   const openModal = () => setIsModalOpen(true);
-
 
   const closeModal = () => setIsModalOpen(false);
 
@@ -113,18 +124,21 @@ const RecommendMate = () => {
       </TitleContainer>
       <CardContainer>
         {members.map((member, index) => (
-          <Card key={index} onClick={openModal}> 
+          <Card key={index} onClick={openModal}>
             <Name>{member.name}</Name>
-            <Tags>
-              {member.tags.map((tag, idx) => (
-                <Tag key={idx}>{tag}</Tag>
-              ))}
-            </Tags>
+            <TagsContainer>
+            {member.tags.map((tag, idx) => (
+        tag === "SpringBoot" || tag === "React" || tag === "TypeScript" ? (
+          <StackTag key={idx} tag={tag}>{tag}</StackTag>
+        ) : (
+          <BasicTag key={idx} tag={tag}>{tag}</BasicTag>
+        )
+      ))}
+            </TagsContainer>
           </Card>
         ))}
       </CardContainer>
 
-     
       {isModalOpen && <RecommendModal onClose={closeModal} />}
     </Container>
   );
