@@ -5,5 +5,5 @@ import WritePost from './WritePost.jsx';
 import MyInfo from './MyInfo.jsx';
 
 export {
-  Home, Mate, MyPage, WritePost,  MyInfo
+  Home, Mate, MyPage, WritePost, MyInfo
 };

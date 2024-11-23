@@ -5,10 +5,12 @@ import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-do
 import { Home, Mate, MyPage, WritePost, MyInfo } from './pages';
 
 const Header = styled.header`
-  width: 100vw;
+  margin: auto;
+  width: 100%;
+  max-width: 420px;
   height: 120px;
   background: #1a3d7d;
-  justify-content: space-between;
+  justify-content: center;
   items-align: center;
   position: relative;
 `;
@@ -69,7 +71,6 @@ const MainContent = () => {
 
   return (
     <>
-      {/* 헤더를 렌더링하지 않는 페이지 */}
       {location.pathname !== '/write' && (
         <Header>
           <LogoImage src={mainLogo} alt='' />
