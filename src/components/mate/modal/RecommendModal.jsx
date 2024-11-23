@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { profile } from "../../../assets";  
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -28,7 +29,8 @@ const ModalContainer = styled.div`
 const ProfileImage = styled.div`
   width: 60px;
   height: 60px;
-  background: #e0e0e0;
+  background: url(${profile}) no-repeat center center;  // 프로필 이미지 경로
+  background-size: cover;
   border-radius: 50%;
   margin-bottom: 10px;
 `;
@@ -42,7 +44,7 @@ const Title = styled.div`
 
 const SubTitle = styled.div`
   font-size: 14px;
-  color: #79747E;
+  color: #79747e;
   margin-bottom: 20px;
 `;
 
@@ -52,23 +54,24 @@ const InfoSection = styled.div`
 `;
 
 const InfoLabel = styled.div`
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 14px;
   color: #000000;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  margin-left: 25px;
 `;
 
 const InfoContent = styled.div`
   font-size: 14px;
   color: #333;
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
+  padding-left: 25px;  
 `;
+
 
 const Tag = styled.div`
   display: flex;
-  width: 40px;
   justify-content: center;
   align-items: center;
   border-radius: 6.329px;
@@ -76,41 +79,48 @@ const Tag = styled.div`
   padding: 5px 10px;
   background: white;
   font-size: 12px;
-  color: #1D1B20;
-  font-family: Normal;
+  color: #1d1b20;
+ 
+`;
+
+const TechTag = styled(Tag)`
+  border: none;
+  background: rgba(214, 234, 255, 0.45); 
+  border-radius: 3px; 
 `;
 
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;  // 중앙 정렬
   width: 100%;
   margin-top: 20px;
 `;
 
 const Button = styled.button`
-  display: flex;
   width: 282px;
   height: 45px;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
   padding: 10px 0;
   font-size: 14px;
-  border: none;
-  border-radius: 5px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(226, 232, 240, 0.80);
   cursor: pointer;
-  background: #f5f5f5;
+  background: white;
   color: #555;
-
 `;
 
 const TextArea = styled.textarea`
-  width: 100%;
-  height: 100px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  width: 282px;
+  height: 160px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 7px;
   padding: 10px;
+  background: #F5F5F5;
   font-size: 14px;
   margin-top: 10px;
   resize: none;
@@ -135,6 +145,10 @@ const RecommendModal = ({ onClose }) => {
   
   const handleModalClick = (e) => {
     e.stopPropagation();
+  };
+
+  const handleButtonClick = () => {
+    closeModal();  
   };
 
   if (!isOpen) return null;
@@ -188,15 +202,15 @@ const RecommendModal = ({ onClose }) => {
         <InfoSection>
           <InfoLabel>기술 스택</InfoLabel>
           <InfoContent>
-            <Tag>SpringBoot</Tag>
-            <Tag>MySQL</Tag>
+            <TechTag>SpringBoot</TechTag> 
+            <TechTag>MySQL</TechTag>
           </InfoContent>
         </InfoSection>
 
-        <TextArea placeholder="추가 내용을 입력하세요..." />
+        <TextArea  />
 
         <ButtonContainer>
-          <Button>제안하기</Button>
+          <Button onClick={handleButtonClick}>제안하기</Button>
         </ButtonContainer>
       </ModalContainer>
     </ModalOverlay>
