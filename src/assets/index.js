@@ -14,6 +14,7 @@ import dropdown from './images/dropdown.svg';
 import calendar from './images/calendar.svg';
 import click from './images/click.svg';
 import recommanduser from './images/recommanduser.svg';
+import kakaoLogin from './images/kakao_login_large_wide.png';
 
 export {
   logo,
@@ -32,4 +33,5 @@ export {
   activatepencil,
   click,
   recommanduser,
+  kakaoLogin,
 };

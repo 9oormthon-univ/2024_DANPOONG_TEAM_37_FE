@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { pencil, activatepencil } from '../../assets';
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -37,7 +38,7 @@ const Title = styled.div`
   font-size: 18px;
   font-weight: 700;
   color: #333;
-   white-space: nowrap
+  white-space: nowrap;
 `;
 
 const PencilIcon = styled.img`
@@ -52,17 +53,17 @@ const StatusLabel = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 3px;
-  background: ${(props) => (props.completed ? "#F5F5F5" : "#FFEAEA")};
-  width: ${(props) => (props.completed ? "44px" : "40px")};
+  background: ${(props) => (props.completed ? '#F5F5F5' : '#FFEAEA')};
+  width: ${(props) => (props.completed ? '44px' : '40px')};
   padding: 4px;
   margin-left: 8px;
-  white-space: nowrap
+  white-space: nowrap;
 `;
 
 const StatusText = styled.span`
   font-size: 12px;
   font-weight: 600;
-  color: ${(props) => (props.completed ? "#999" : "#D32F2F")};
+  color: ${(props) => (props.completed ? '#999' : '#D32F2F')};
 `;
 
 const ApplyStatusButton = styled.button`
@@ -114,7 +115,7 @@ const PeopleInfo = styled.div`
   font-size: 11px;
   margin-top: 15px;
   text-align: center;
-   white-space: nowrap
+  white-space: nowrap;
 `;
 
 const EditButton = styled.button`
@@ -125,28 +126,27 @@ const EditButton = styled.button`
   align-items: center;
   flex-shrink: 0;
   border-radius: 10px;
-  border: 1.5px solid rgba(226, 232, 240, 0.80);
+  border: 1.5px solid rgba(226, 232, 240, 0.8);
   background: white;
   color: #474747;
   text-align: center;
   font-size: 14px;
   cursor: pointer;
-  position: absolute; 
+  position: absolute;
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
 `;
 
-const PostModal = ({ onClose }) => {
-  const [isEditing, setIsEditing] = useState(false); 
+const RecommnedModal = ({ onClose }) => {
+  const [isEditing, setIsEditing] = useState(false);
 
   const toggleEditing = () => {
-    setIsEditing((prev) => !prev); 
+    setIsEditing((prev) => !prev);
   };
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
-      
       onClose();
     }
   };
@@ -156,28 +156,33 @@ const PostModal = ({ onClose }) => {
       <ModalContainer onClick={(e) => e.stopPropagation()}>
         <Header>
           <Title>개발자 모집 공고</Title>
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
             <StatusLabel completed={false}>
               <StatusText completed={false}>D-10</StatusText>
             </StatusLabel>
             <ApplyStatusButton>지원현황</ApplyStatusButton>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-              <PeopleInfo>현재인원/총인원</PeopleInfo>
-            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            ></div>
           </div>
         </Header>
-        <Subtitle>장연주 ㅣ 2024-11-23</Subtitle>
+        <Subtitle>
+          홍길동 ㅣ 2024-11-23
+          <PeopleInfo>현재인원/총인원</PeopleInfo>
+        </Subtitle>
         <Body>
           <ContentContainer>{/* 컨텐츠 나중에 추가 */}</ContentContainer>
           <Divider />
           <ContentContainer>{/* 컨텐츠 나중에 추가 */}</ContentContainer>
         </Body>
-        {isEditing && (
-          <EditButton onClick={onClose}>수정하기</EditButton>  
-        )}
+        {isEditing && <EditButton onClick={onClose}>수정하기</EditButton>}
       </ModalContainer>
     </ModalOverlay>
   );
 };
 
-export default PostModal;
+export default RecommnedModal;

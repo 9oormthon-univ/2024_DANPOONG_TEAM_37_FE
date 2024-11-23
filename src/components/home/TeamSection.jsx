@@ -64,6 +64,42 @@ const Card = styled.div`
   }
 `;
 
+const Label = styled.div`
+  display: flex;
+  width: 44px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  background: rgba(238, 246, 255, 0.7);
+  color: rgba(67, 72, 143, 0.8);
+  font-family: Roboto, sans-serif;
+  font-size: 9.29px;
+  font-weight: 500;
+  line-height: 13.271px;
+  letter-spacing: 0.066px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+`;
+
+const StatusLabel = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  font-family: Roboto, sans-serif;
+  font-size: 9.29px;
+  font-weight: 500;
+  line-height: 13.271px;
+  letter-spacing: 0.066px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: ${(props) => (props.completed ? '44px' : '34px')};
+  background: ${(props) => (props.completed ? '#F5F5F5' : '#FFEAEA')};
+  color: ${(props) => (props.completed ? '#666' : '#D9534F')};
+`;
+
 const TeamSection = ({ filteredData =[] }) => {
   return (
     <Section>
