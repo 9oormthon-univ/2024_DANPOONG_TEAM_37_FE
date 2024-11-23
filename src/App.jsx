@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { mainLogo, notify } from './assets';
-import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
-import { Home, Mate, MyPage, WritePost, MyInfo, ApplyNow } from './pages';
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Routes,
+  useLocation,
+} from 'react-router-dom';
+import {
+  Home,
+  Mate,
+  MyPage,
+  WritePost,
+  ApplyNow,
+  Login,
+  Redirection,
+  Start,
+  NewCv,
+  BasicInfoFrom
+} from './pages';
 
 const Header = styled.header`
   margin: auto;
@@ -58,6 +75,16 @@ const Underline = styled.div`
   margin-bottom: 1px;
 `;
 
+const shouldRenderHeader = (pathname) => {
+  return (
+    pathname !== '/write' &&
+    pathname !== '/apply' &&
+    pathname !== '/' &&
+    pathname !== '/newcv' &&
+    pathname !== '/mypage/myinfo' 
+  );
+};
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -66,21 +93,30 @@ const App = () => {
   );
 };
 
-const shouldRenderHeader = (pathname) => {
-  return pathname !== '/write' && pathname !== '/apply';
-};
-
 const MainContent = () => {
   const location = useLocation();
 
+  useEffect(() => {
+    // 로그인 상태 확인
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogin = (token) => {
+    localStorage.setItem('authToken', token);
+    setIsLoggedIn(true);
+  };
+
   return (
     <>
-  {shouldRenderHeader(location.pathname) && (
+      {shouldRenderHeader(location.pathname) && (
         <Header>
           <LogoImage src={mainLogo} alt='' />
           <Notify src={notify} alt='' />
           <TabBar>
-            <Link to='/' style={{ textDecoration: 'none' }}>
+            <Link to='/home' style={{ textDecoration: 'none' }}>
               <TabItem>HOME</TabItem>
             </Link>
             <Link to='/mate' style={{ textDecoration: 'none' }}>
@@ -95,12 +131,16 @@ const MainContent = () => {
       )}
       <main>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/' element={<Start />} />
           <Route path='/mate' element={<Mate />} />
           <Route path='/mypage' element={<MyPage />} />
           <Route path='/write' element={<WritePost />} />
           <Route path='/apply' element={<ApplyNow />} />
-          <Route path='/mypage/myinfo' element={<MyInfo />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/newcv' element={<NewCv />} />
+          <Route path='/api/v1/kakao' element={<Redirection />} />
+          <Route path='/mypage/myinfo' element={<BasicInfoFrom />} />
         </Routes>
       </main>
       <footer></footer>

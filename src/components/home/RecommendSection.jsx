@@ -1,35 +1,42 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Modal from 'react-modal';
+import RecommendModal from './RecommendModal';
+import { user } from '../../assets';
+import { FindTeam } from '../../components';
+
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const Section = styled.div`
-  margin-top: 20px;
   width: 90%;
+  margin: 0 auto;
+  .custom-slide {
+   color: #1a3d7d;
+    margin: 15px 0px; /* 왼쪽과 오른쪽에 15px 마진 추가 */
+  }
 `;
 
-const RecommendCard = styled.div`
-  border: 1.5px solid rgba(226, 232, 240, 0.8);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 16px;
-  padding: 15px 25px 15px 25px;
+const ListItem = styled.div`
+  width: 350px;
   height: 270px;
+  flex-shrink: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 15px 25px 15px 25px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  border: 1.5px solid rgba(226, 232, 240, 0.8);
+  margin-bottom: 16px;
   cursor: pointer;
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
-
-    .tag {
-      background: #ff6b6b;
-      color: white;
-      border-radius: 12px;
-      font-size: 12px;
-      padding: 2px 8px;
-    }
-  }
 
   .content {
     margin-top: 32px;
@@ -48,6 +55,7 @@ const RecommendCard = styled.div`
     }
   }
 
+  
   .footer {
     display: flex;
     justify-content: space-between;
@@ -70,122 +78,145 @@ const RecommendCard = styled.div`
       font-size: 12px;
       color: #999;
     }
-  }
 `;
 
-const modalStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    transform: 'translate(-50%, -50%)',
-    width: '90%',
-    maxWidth: '500px',
-    borderRadius: '16px',
-    padding: '20px',
-    position: 'relative',
-  },
-  overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    zIndex: 1000,
-  },
-};
-
-const ModalHeader = styled.div`
+const Label = styled.div`
   display: flex;
-  justify-content: space-between;
+  width: 44px;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 16px;
+  border-radius: 3px;
+  background: rgba(238, 246, 255, 0.7);
+  color: rgba(67, 72, 143, 0.8);
+  font-family: Roboto, sans-serif;
+  font-size: 9.29px;
+  font-weight: 500;
+  line-height: 13.271px;
+  letter-spacing: 0.066px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+`;
 
-  h3 {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
-    color: #333;
-  }
+const StatusLabel = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  font-family: Roboto, sans-serif;
+  font-size: 9.29px;
+  font-weight: 500;
+  line-height: 13.271px;
+  letter-spacing: 0.066px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: ${(props) => (props.completed ? '44px' : '34px')};
+  background: ${(props) => (props.completed ? '#F5F5F5' : '#FFEAEA')};
+  color: ${(props) => (props.completed ? '#666' : '#D9534F')};
+`;
 
-  .tag {
-    background: #ff6b6b;
-    color: white;
-    padding: 4px 8px;
-    font-size: 12px;
-    border-radius: 8px;
+const TitleIcon = styled.span`
+  font-size: 18px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 20px;
+    height: 20px;
   }
 `;
 
-const DescriptionBox = styled.div`
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  min-height: 100px;
-  font-size: 14px;
-  color: #555;
-  overflow-y: auto;
-  margin-bottom: 16px;
-`;
-
-const ApplyButton = styled.button`
-  width: 100%;
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 12px;
+const Title = styled.h3`
   font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-
-  &:hover {
-    background: #0056b3;
-  }
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
 `;
 
 const RecommendSection = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const items = [
+    {
+      type: '프로젝트',
+      title: '프로젝트 1',
+      contents: '프로젝트 1에 대한 설명',
+      currentMembers: 5,
+      totalMembers: 10,
+      status: { completed: false, remainingDays: 5 },
+    },
+    {
+      type: '스터디',
+      title: '스터디 1',
+      contents: '스터디 1에 대한 설명',
+      currentMembers: 3,
+      totalMembers: 5,
+      status: { completed: true },
+    },
+    {
+      type: '프로젝트',
+      title: '프로젝트 2',
+      contents: '프로젝트 2에 대한 설명',
+      currentMembers: 2,
+      totalMembers: 10,
+      status: { completed: false, remainingDays: 12 },
+    },
+  ];
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedItem(null);
+  };
+
+  const handleWriteClick = () => {
+    if (activeComponent === '팀장') {
+      navigate('/write');
+    }
+  };
 
   return (
     <Section>
-      <h2>오늘 OOO님에게 온 MATE</h2>
-      <RecommendCard onClick={() => setIsModalOpen(true)}>
-        <div className='header'>
-          <div className='tag'>D-10</div>
-        </div>
-        <div className='content'>
-          <div className='title'>프로젝트 제목</div>
-          <p className='text'>
-            프로젝트 내용 프로젝트 내용 프로젝트 내용 프로젝트 내용 프로젝트
-            프로젝트 내용 프로젝트 내용 프로젝트 내용 프로젝트 내용 프로젝트
-          </p>
-        </div>
-        <div className='footer'>
-          <div className='skills'>
-            <span>React</span>
-            <span>SpringBoot</span>
-            <span>MySQL</span>
-            <span>Figma</span>
-          </div>
-          <div className='info'>2/18</div>
-        </div>
-      </RecommendCard>
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-        style={modalStyles}
-        contentLabel='추천 게시글'
+      <Title>
+        <TitleIcon>
+          <img src={user} alt='user' />
+        </TitleIcon>
+        <h2>오늘 OOO님에게 온 MATE</h2>
+      </Title>
+      <FindTeam onClick={handleWriteClick} />
+      <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        spaceBetween={20}
+        slidesPerView={1} // 화면에 표시될 슬라이드 수
+        pagination={{ clickable: true }}
       >
-        <ModalHeader>
-          <h3>프로젝트 제목</h3>
-          <span className='tag'>D-10</span>
-        </ModalHeader>
-        <p>작성자 | 2024. 11. 02</p>
-
-        <DescriptionBox>상세 모집글 내용이 여기에 들어갑니다.</DescriptionBox>
-
-        <ApplyButton onClick={() => setIsModalOpen(false)}>
-          지원하기
-        </ApplyButton>
-      </Modal>
+        {items.map((item, index) => (
+          <SwiperSlide className='custom-slide' key={index}>
+            <ListItem onClick={() => handleItemClick(item)}>
+              <Label>{item.type}</Label>
+              <StatusLabel completed={item.status.completed}>
+                {item.status.completed
+                  ? '모집완료'
+                  : `D-${item.status.remainingDays}`}
+              </StatusLabel>
+              <div className='content'>
+                <div className='title'>{item.title}</div>
+                <div className='text'>{item.contents}</div>
+              </div>
+            </ListItem>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      {selectedItem && (
+        <RecommendModal data={selectedItem} onClose={handleCloseModal} />
+      )}
     </Section>
   );
 };
