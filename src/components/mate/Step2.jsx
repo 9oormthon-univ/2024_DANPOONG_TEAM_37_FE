@@ -18,6 +18,7 @@ const Title = styled.h2`
   color: #333;
   margin-bottom: 1.5px;
   margin-left: -250px;
+  font-family: Normal;
 `;
 
 const TitleInput = styled.input`
@@ -81,6 +82,7 @@ const Button = styled.button`
   font-size: 18px;
   cursor: pointer;
   margin-top: auto;
+  font-family: Light;
 
   &:disabled {
     background: #ccc;
