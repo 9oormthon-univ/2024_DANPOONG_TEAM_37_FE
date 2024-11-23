@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; 
 import styled from "styled-components";
 
 const MateListItem = styled.div`
@@ -55,6 +55,23 @@ const StatusLabel = styled.div`
   right: 8px;
 `;
 
+const AuthorProposalLabel = styled.div`
+  display: flex;
+  width: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  background: #1A3D7D;
+  color: white;
+  font-size: 9.29px;
+  font-weight: 500;
+  position: absolute;
+  top: 16px;
+  left: 65px;  
+  height: 21.233px;
+  padding: 2px 8px;
+`;
+
 const ProposeList = () => {
   const projects = [
     { title: " 프로젝트", type: "프로젝트", status: "가입완료" },
@@ -67,6 +84,7 @@ const ProposeList = () => {
       {projects.map((project, index) => (
         <MateListItem key={index}>
           <MateLabel>{project.type}</MateLabel> 
+          <AuthorProposalLabel>작성자 제안</AuthorProposalLabel> 
           <StatusLabel>{project.status}</StatusLabel> 
           <MateTitle>{project.title}</MateTitle> 
         </MateListItem>
