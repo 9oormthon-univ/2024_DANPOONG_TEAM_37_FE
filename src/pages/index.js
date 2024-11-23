@@ -3,7 +3,8 @@ import Mate from './Mate.jsx';
 import MyPage from './MyPage.jsx';
 import WritePost from './WritePost.jsx';
 import MyInfo from './MyInfo.jsx';
+import ApplyNow from './ApplyNow.jsx';
 
 export {
-  Home, Mate, MyPage, WritePost, MyInfo
+  Home, Mate, MyPage, WritePost,  MyInfo, ApplyNow
 };
