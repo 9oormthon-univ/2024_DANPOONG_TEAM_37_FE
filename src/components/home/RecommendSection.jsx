@@ -16,12 +16,13 @@ const Section = styled.div`
   width: 90%;
   margin: 0 auto;
   .custom-slide {
-   color: #1a3d7d;
+    color: #1a3d7d;
     margin: 15px 0px; /* 왼쪽과 오른쪽에 15px 마진 추가 */
   }
 `;
 
 const ListItem = styled.div`
+ margin: 0 auto;
   width: 350px;
   height: 270px;
   flex-shrink: 0;

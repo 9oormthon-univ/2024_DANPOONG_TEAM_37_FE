@@ -118,6 +118,29 @@ const Tag = styled.div`
   }
 `;
 
+const Button = styled.button`
+  width: 330px;
+  display: flex;
+  height: 45px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 16px;
+  background: white;
+  color: #b3b3b3;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: auto;
+
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    border: 1.5px solid #e2e8f0;
+  }
+`;
+
 const customSelectStyles = {
   control: (styles) => ({
     ...styles,
@@ -127,8 +150,7 @@ const customSelectStyles = {
   }),
 };
 
-const Step2 = () => {
- 
+const Step2 = ({onNext}) => {
   const [form, setForm] = useState({
     name: '',
     category: '프로젝트',
@@ -155,10 +177,6 @@ const Step2 = () => {
       ...prev,
       interests: prev.interests.filter((item) => item !== tag),
     }));
-  };
-
-  const handleSubmit = () => {
-    console.log('Form Data:', form);
   };
 
   const positions = [
@@ -239,9 +257,7 @@ const Step2 = () => {
           ))}
         </InterestTags>
       </FormGroup>
-      <NextButton disabled={!form.name} onClick={handleSubmit}>
-        다음
-      </NextButton>
+      <Button onClick={onNext}>다음</Button>
     </Container>
   );
 };
