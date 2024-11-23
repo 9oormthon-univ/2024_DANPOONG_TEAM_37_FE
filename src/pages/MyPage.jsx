@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { basicProfile } from '../assets';
 import Modal from 'react-modal';
-import CvModal from '../components/contents/mypage/CvModal';
+import CvModal from '../components/mypage/CvModal';
 
 const MyPageSection = styled.section`
   display: flex;
@@ -12,19 +12,6 @@ const MyPageSection = styled.section`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`;
-
-const ProfileDiv = styled.div`
-  text-align: center;
-  display: flex;
-  .profile-name {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 12px 0 4px;
-  }
-  .profile-email {
-    font-size: 13px;
-  }
 `;
 
 const Profile = styled.img`

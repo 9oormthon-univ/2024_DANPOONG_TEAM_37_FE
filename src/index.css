@@ -8,6 +8,10 @@ body {
   margin: 0;
 }
 
+footer {
+  margin-top: 60px;
+}
+
 @font-face {
   font-family: 'Black';
   src: url('assets/fonts/Pretendard-Black.woff') format('woff');

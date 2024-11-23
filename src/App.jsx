@@ -5,10 +5,12 @@ import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-do
 import { Home, Mate, MyPage, WritePost, MyInfo, ApplyNow } from './pages';
 
 const Header = styled.header`
-  width: 100vw;
+  margin: auto;
+  width: 100%;
+  max-width: 420px;
   height: 120px;
   background: #1a3d7d;
-  justify-content: space-between;
+  justify-content: center;
   items-align: center;
   position: relative;
 `;
@@ -73,7 +75,7 @@ const MainContent = () => {
 
   return (
     <>
-      {shouldRenderHeader(location.pathname) && (
+  {shouldRenderHeader(location.pathname) && (
         <Header>
           <LogoImage src={mainLogo} alt='' />
           <Notify src={notify} alt='' />
@@ -101,6 +103,7 @@ const MainContent = () => {
           <Route path='/mypage/myinfo' element={<MyInfo />} />
         </Routes>
       </main>
+      <footer></footer>
     </>
   );
 };
