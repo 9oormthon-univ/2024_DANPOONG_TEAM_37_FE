@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import {TeamSection} from '../../components'
 
 const Container = styled.div`
-
   width: 90%;
 `;
 
@@ -21,33 +20,6 @@ const Tab = styled.button`
   font-style: normal;
   cursor: pointer;
   border: none;
-`;
-
-const Card = styled.div`
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-  }
-
-  .skills {
-    display: flex;
-    gap: 8px;
-
-    span {
-      background: #f5f5f5;
-      border-radius: 8px;
-      padding: 4px 8px;
-      font-size: 12px;
-      color: #333;
-    }
-  }
 `;
 
 const Filter = () => {

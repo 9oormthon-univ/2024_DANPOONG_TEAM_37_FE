@@ -16,6 +16,7 @@ import calendar from './images/calendar.svg';
 import click from './images/click.svg';
 import profile from './images/profile.svg';
 import recommanduser from './images/recommanduser.svg';
+import kakaoLogin from './images/kakao_login_large_wide.png';
 
 export {
   logo,
@@ -36,4 +37,5 @@ export {
   click,
   profile,
   recommanduser,
+  kakaoLogin,
 };
