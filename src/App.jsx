@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { mainLogo, notify } from './assets';
 import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
-import { Home, Mate, MyPage, WritePost, MyInfo } from './pages';
+import { Home, Mate, MyPage, WritePost, MyInfo, ApplyNow } from './pages';
 
 const Header = styled.header`
   width: 100vw;
@@ -64,13 +64,16 @@ const App = () => {
   );
 };
 
+const shouldRenderHeader = (pathname) => {
+  return pathname !== '/write' && pathname !== '/apply';
+};
+
 const MainContent = () => {
-  const location = useLocation();  
+  const location = useLocation();
 
   return (
     <>
-      {/* 헤더를 렌더링하지 않는 페이지 */}
-      {location.pathname !== '/write' && (
+      {shouldRenderHeader(location.pathname) && (
         <Header>
           <LogoImage src={mainLogo} alt='' />
           <Notify src={notify} alt='' />
@@ -94,6 +97,7 @@ const MainContent = () => {
           <Route path='/mate' element={<Mate />} />
           <Route path='/mypage' element={<MyPage />} />
           <Route path='/write' element={<WritePost />} />
+          <Route path='/apply' element={<ApplyNow />} />
           <Route path='/mypage/myinfo' element={<MyInfo />} />
         </Routes>
       </main>
