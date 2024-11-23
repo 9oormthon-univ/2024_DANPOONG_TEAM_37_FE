@@ -7,7 +7,9 @@ import notify from './images/notify.svg';
 import user from './images/user.svg';
 import write from './images/write.svg';
 import pencil from './images/pencil.svg';
+import activatepencil from './images/activatepencil.svg';
 import hand from './images/hand.svg';
+import activatehand from './images/activatehand.svg';
 import dropdown from './images/dropdown.svg';
 import calendar from './images/calendar.svg';
 
@@ -22,6 +24,8 @@ export {
   write,
   pencil, 
   hand,
+  activatehand,
   dropdown,
   calendar,
+  activatepencil,
 };
