@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import PostModal from "./modal/PostModal"; 
 
 const MateListItem = styled.div`
   width: 350px;
@@ -31,11 +32,9 @@ const MateLabel = styled.div`
   border-radius: 4px;
   font-size: 10px;
   padding: 4px 8px;
-  border-radius: 4px;
   background-color: #EEF6FFB2;
   color: #43488FCC;
   position: absolute;
-  box-sizing: border-box;
   top: 16px; 
   left: 8px;
   height: 21.233px;
@@ -58,21 +57,33 @@ const StatusLabel = styled.div`
 `;
 
 const MateList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 추가
+
   const projects = [
     { title: "프론트엔드 프로젝트", type: "프로젝트", status: "가입완료" },
     { title: "백엔드 스터디", type: "스터디", status: "가입대기" },
     { title: "디자인 협업 프로젝트", type: "프로젝트", status: "거절됨" },
   ];
 
+  const handleItemClick = () => {
+    setIsModalOpen(true); // 아이템 클릭 시 모달 열기
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false); // 모달 닫기
+  };
+
   return (
     <div>
       {projects.map((project, index) => (
-        <MateListItem key={index}>
+        <MateListItem key={index} onClick={handleItemClick}>
           <MateLabel>{project.type}</MateLabel> 
           <StatusLabel>{project.status}</StatusLabel> 
           <MateTitle>{project.title}</MateTitle> 
         </MateListItem>
       ))}
+
+      {isModalOpen && <PostModal onClose={closeModal} />} {/* 모달 표시 */}
     </div>
   );
 };
