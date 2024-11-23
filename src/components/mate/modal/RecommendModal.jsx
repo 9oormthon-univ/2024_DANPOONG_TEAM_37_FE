@@ -69,7 +69,6 @@ const InfoContent = styled.div`
   padding-left: 25px;  
 `;
 
-
 const Tag = styled.div`
   display: flex;
   justify-content: center;
@@ -80,7 +79,6 @@ const Tag = styled.div`
   background: white;
   font-size: 12px;
   color: #1d1b20;
- 
 `;
 
 const TechTag = styled(Tag)`
@@ -89,10 +87,9 @@ const TechTag = styled(Tag)`
   border-radius: 3px; 
 `;
 
-
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: center;  // 중앙 정렬
+  justify-content: center;
   width: 100%;
   margin-top: 20px;
 `;
@@ -129,26 +126,38 @@ const TextArea = styled.textarea`
 const RecommendModal = ({ onClose }) => {
   const [isOpen, setIsOpen] = useState(true);
 
- 
   const closeModal = () => {
     setIsOpen(false);
     onClose(); 
   };
 
-  
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       closeModal();
     }
   };
 
-  
   const handleModalClick = (e) => {
     e.stopPropagation();
   };
 
-  const handleButtonClick = () => {
-    closeModal();  
+  const handleButtonClick = async () => {
+    const url = `${import.meta.env.VITE_API_URL}/api/v1/email/send?to=mentenseoul@gmail.com&subject=안녕하세요`;
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+      });
+
+      if (response.ok) {
+        console.log("Email sent successfully");
+      } else {
+        console.error("Failed to send email");
+      }
+    } catch (error) {
+      console.error("Error occurred while sending email:", error);
+    }
+
+    closeModal();
   };
 
   if (!isOpen) return null;
@@ -207,7 +216,7 @@ const RecommendModal = ({ onClose }) => {
           </InfoContent>
         </InfoSection>
 
-        <TextArea  />
+        <TextArea />
 
         <ButtonContainer>
           <Button onClick={handleButtonClick}>제안하기</Button>
