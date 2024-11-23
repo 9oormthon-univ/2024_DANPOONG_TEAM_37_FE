@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const MateListItem = styled.div`
- width: 350px;
-height: 85px;
+  width: 350px;
+  height: 85px;
   background-color: #fff;
   border-radius: 8px;
   padding: 16px;

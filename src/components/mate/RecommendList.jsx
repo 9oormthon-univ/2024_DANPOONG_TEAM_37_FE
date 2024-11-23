@@ -1,23 +1,34 @@
 import React from "react";
 import styled from "styled-components";
+import { recommanduser } from "../../assets"; 
 
 const RecommendContainer = styled.div`
   padding: 16px;
   margin-top: 16px;
+  width: 350px;
+  height: 85px;
 `;
 
 const Title = styled.h3`
   font-size: 16px;
   font-weight: 600;
   color: #333;
-  margin-bottom: 12px;
+  margin-bottom: 5px;
   display: flex;
   align-items: center;
+  margin-left: 5px;
 `;
 
 const TitleIcon = styled.span`
   font-size: 18px;
   margin-right: 8px;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 20px; 
+    height: 20px;
+  }
 `;
 
 const ListContainer = styled.div`
@@ -47,8 +58,8 @@ const Label = styled.div`
   font-size: 10px;
   padding: 4px 8px;
   border-radius: 4px;
-  background-color: ${(props) => (props.type === "project" ? "#ebf4ff" : "#f0fff4")};
-  color: ${(props) => (props.type === "project" ? "#3182ce" : "#48bb78")};
+  background-color: #ebf4ff;
+  color: #3182ce;
 `;
 
 const Deadline = styled.div`
@@ -79,7 +90,10 @@ const RecommendList = () => {
   return (
     <RecommendContainer>
       <Title>
-        <TitleIcon>👥</TitleIcon> 이런 Team은 어떠세요?
+        <TitleIcon>
+          <img src={recommanduser} alt="Recommand User Icon" />
+        </TitleIcon>
+        이런 Team은 어떠세요?
       </Title>
       <ListContainer>
         {teams.map((team, index) => (
