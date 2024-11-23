@@ -7,7 +7,9 @@ import { back } from "../assets";
 import { useNavigate } from "react-router-dom";
 
 const Header = styled.header`
-  width: 100vw;
+  margin: auto;
+  width: 100%;
+  max-width: 420px;
   height: 100px;
   background: #1a3d7d;
   display: flex;
@@ -16,7 +18,7 @@ const Header = styled.header`
   position: relative;
   color: white;
   font-size: 24px;
-  font-weight: bold;
+  font-family: Normal;
 `;
 
 const BackIcon = styled.img`
