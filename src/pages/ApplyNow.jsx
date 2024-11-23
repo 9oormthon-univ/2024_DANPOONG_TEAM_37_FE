@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { back } from "../assets";
 import { useNavigate } from "react-router-dom";
+import OurTeam from "../components/mate/OurTeam"; 
+import RecommendMate from "../components/mate/RecommendMate";
+import ApplyMate from "../components/mate/ApplyMate"; 
 
 const Header = styled.header`
-  width: 100vw;
+  margin: auto;
+  width: 100%;
+  max-width: 420px;
   height: 100px;
   background: #1a3d7d;
   display: flex;
@@ -13,7 +18,7 @@ const Header = styled.header`
   position: relative;
   color: white;
   font-size: 24px;
-  font-weight: bold;
+  font-family: Normal;
 `;
 
 const BackIcon = styled.img`
@@ -24,18 +29,19 @@ const BackIcon = styled.img`
   cursor: pointer;
 `;
 
+const Main = styled.main`
+  padding: 20px;
+  display: flex;
+  flex-direction: column; 
+  gap: 20px; 
+  align-items: center; 
+`;
 
 const ApplyNow = () => {
-  const [step, setStep] = useState(1);
   const navigate = useNavigate();
 
-  const goNextStep = () => setStep((prev) => Math.min(prev + 1, 3));
   const goPrevStep = () => {
-    if (step === 1) {
-      navigate("/mate"); 
-    } else {
-      setStep((prev) => prev - 1);
-    }
+    navigate("/mate");
   };
 
   return (
@@ -44,8 +50,11 @@ const ApplyNow = () => {
         <BackIcon src={back} alt="뒤로가기" onClick={goPrevStep} />
         지원현황
       </Header>
-      <main>
-      </main>
+      <Main>
+        <OurTeam /> 
+        <RecommendMate /> 
+        <ApplyMate /> 
+      </Main>
     </>
   );
 };

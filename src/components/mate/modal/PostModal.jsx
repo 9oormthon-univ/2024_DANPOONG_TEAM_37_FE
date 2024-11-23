@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { pencil, activatepencil } from "../../../assets"; 
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -15,14 +16,15 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContainer = styled.div`
-  width: 352px;
-  height: 741px;
+  width: 350px;  
+  height: 650px; 
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   overflow: hidden;
 `;
 
@@ -30,21 +32,22 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
+  padding: 12px 16px;  
 `;
 
 const Title = styled.div`
-  font-size: 18px;
+  font-size: 20px;  
   font-weight: 700;
   color: #333;
-   white-space: nowrap
+  white-space: nowrap;
 `;
 
 const PencilIcon = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 24px;  
+  height: 24px;
   cursor: pointer;
-  margin-left: 8px;
+  margin-left: 20px;
+  margin-top: 13px;
 `;
 
 const StatusLabel = styled.div`
@@ -56,24 +59,24 @@ const StatusLabel = styled.div`
   width: ${(props) => (props.completed ? "44px" : "40px")};
   padding: 4px;
   margin-left: 8px;
-  white-space: nowrap
+  white-space: nowrap;
 `;
 
 const StatusText = styled.span`
-  font-size: 12px;
+  font-size: 10px;  
   font-weight: 600;
   color: ${(props) => (props.completed ? "#999" : "#D32F2F")};
 `;
 
 const ApplyStatusButton = styled.button`
-  width: 65px;
-  height: 26px;
+  width: 60px;  
+  height: 24px;  
   flex-shrink: 0;
   border-radius: 5px;
   background: #1a3d7d;
   color: white;
   text-align: center;
-  font-size: 10px;
+  font-size: 10px;  
   font-weight: 600;
   border: none;
   cursor: pointer;
@@ -83,22 +86,22 @@ const ApplyStatusButton = styled.button`
 const Subtitle = styled.div`
   color: #79747e;
   text-align: left;
-  font-size: 13px;
+  font-size: 12px;  
   font-weight: 400;
   margin-top: 8px;
-  padding-left: 24px;
+  padding-left: 16px; 
 `;
 
 const Body = styled.div`
   flex: 1;
-  padding: 24px;
+  padding: 16px; 
   overflow-y: hidden;
   overflow-x: hidden;
 `;
 
 const ContentContainer = styled.div`
-  width: 322px;
-  height: 277px;
+  width: 280px;  
+  height: 230px; 
   background-color: #f9f9f9;
   margin-bottom: 16px;
 `;
@@ -106,21 +109,21 @@ const ContentContainer = styled.div`
 const Divider = styled.hr`
   border: none;
   border-top: 1px solid #e6e6e6;
-  margin: 16px 0;
+  margin: 12px 0;  
 `;
 
 const PeopleInfo = styled.div`
   color: #b3b3b3;
-  font-size: 11px;
-  margin-top: 15px;
+  font-size: 11px;  
+  margin-top: 12px;
   text-align: center;
-   white-space: nowrap
+  white-space: nowrap;
 `;
 
 const EditButton = styled.button`
   display: flex;
-  width: 322px;
-  height: 45px;
+  width: 280px;  
+  height: 40px;  
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -129,9 +132,9 @@ const EditButton = styled.button`
   background: white;
   color: #474747;
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;  
   cursor: pointer;
-  position: absolute; 
+  position: absolute;
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
@@ -146,7 +149,6 @@ const PostModal = ({ onClose }) => {
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
-      
       onClose();
     }
   };
@@ -162,7 +164,12 @@ const PostModal = ({ onClose }) => {
             </StatusLabel>
             <ApplyStatusButton>지원현황</ApplyStatusButton>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-              <PeopleInfo>현재인원/총인원</PeopleInfo>
+              <PencilIcon
+                src={isEditing ? pencil : activatepencil} 
+                alt="pencil icon"
+                onClick={toggleEditing} 
+              />
+              <PeopleInfo>현재 인원 / 총 인원</PeopleInfo>
             </div>
           </div>
         </Header>
