@@ -1,16 +1,11 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
-import Toggle from "../components/mate/Toggle";
-import { write, hand } from "../assets";
+import React, { useState } from "react"; 
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import LeaderList from "../components/mate/LeaderList"; 
-
-const MateContent = styled.div`
-  padding: 16px;
-  display: flex;
-  justify-content: center; 
-  align-items: center; /* 중앙 정렬 */
-`;
+import Toggle from "../components/mate/Toggle"; 
+import List from "../components/mate/List"; 
+import MateList from "../components/mate/MateList"; 
+import RecommendList from "../components/mate/RecommendList"; 
+import { write, hand } from "../assets"; 
 
 const IconContainer = styled.div`
   display: flex;
@@ -19,12 +14,19 @@ const IconContainer = styled.div`
   padding: 16px;
 `;
 
+const MateContent = styled.div`
+  padding: 16px;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+`;
+
 const Mate = () => {
-  const [activeComponent, setActiveComponent] = useState("팀장");
-  const navigate = useNavigate(); 
+  const [activeComponent, setActiveComponent] = useState("팀장"); 
+  const navigate = useNavigate();
 
   const handleToggleChange = (type) => {
-    setActiveComponent(type);
+    setActiveComponent(type); 
   };
 
   const handleWriteClick = () => {
@@ -35,6 +37,7 @@ const Mate = () => {
 
   return (
     <>
+      
       <IconContainer>
         <Toggle onToggleChange={handleToggleChange} />
         <img
@@ -42,15 +45,20 @@ const Mate = () => {
           alt={activeComponent === "팀장" ? "Write Icon" : "Hand Icon"}
           width="24"
           height="24"
-          style={{ cursor: "pointer" }} 
-          onClick={handleWriteClick} 
+          style={{ cursor: "pointer" }}
+          onClick={handleWriteClick}
         />
       </IconContainer>
+
+      
       <MateContent>
         {activeComponent === "팀장" ? (
-          <LeaderList /> /* 팀장 리스트 표시 */
+          <List /> 
         ) : (
-          <div>팀원</div>
+          <>
+            <MateList /> 
+            <RecommendList /> 
+          </>
         )}
       </MateContent>
     </>
